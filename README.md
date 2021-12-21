@@ -6,5 +6,5 @@
 /_/  /____/\____/\__,_/_/   \___/\___/   \__,_/ .___/_/   
                                              /_/          
 ```
-# api
+# rsource api
 API for the rsource records' databases. This is a concept repository and is not active currently.
