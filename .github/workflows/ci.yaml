@@ -1,5 +1,5 @@
 name: CI
-on: push
+on: ["push", "pull_request"]
 
 jobs:
   GoFmt:
@@ -10,7 +10,16 @@ jobs:
         uses: actions/setup-go@v2
         with:
           go-version: ">=1.17"
-      - run: go fmt src
+      - run: go fmt src/**/*.go
+  GoVet:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Setup Go
+        uses: actions/setup-go@v2
+        with:
+          go-version: ">=1.17"
+      - run: go vet src/**/*.go
   GoLint:
     runs-on: ubuntu-latest
     steps:
@@ -19,4 +28,4 @@ jobs:
         uses: actions/setup-go@v2
         with:
           go-version: ">=1.17"
-      - run: tree
+      - run: go run src/**/*.go
