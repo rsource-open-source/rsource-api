@@ -13,3 +13,9 @@
 
 # Dependency directories (remove the comment below to include it)
 # vendor/
+
+# Since go uses a seperate workspace, I use this to redirect back to the rsource directory for the other projects
+*.lnk
+
+# DigitalOcean Database Connection Information
+cred
