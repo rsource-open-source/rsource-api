@@ -13,7 +13,6 @@ func helloWorld(c *fiber.Ctx) {
 // }
 
 func main() {
-
 	app := fiber.New()
 
 	app.Get("/", helloWorld)
