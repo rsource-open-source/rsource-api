@@ -1,0 +1,58 @@
+# mapforums
+
+type Post {
+  id: ID!
+  author: User!
+  title: String
+  content: String!
+  answer: [Post]
+  type: PostType!
+  reply_of: Post.id
+  timestamp: DateTime!
+}
+
+type User {
+  discord_id: ID!
+  roblox_id: ID!
+  posts: [Post]!
+  roles: [Role]!
+  votes: [Vote]!
+  restricted: Boolean!
+}
+
+type Vote {
+  Post: Post!
+  User: User!
+  Cast: VoteCast!
+}
+
+type WikiPage {
+  id: ID!
+  title: String!
+  content: String!
+  timestamp: DateTime!
+  collaborators: [User!]!
+  commit_history: 
+}
+
+type Commit {
+  content: String!
+  timestamp: DateTime!
+  submitter: User!
+  id_to_page: SomePage.id!
+}
+
+# Enums
+
+enum VoteCast {
+  Upvote
+  Downvote
+}
+
+# Unions
+
+union SomePage = WikiPage | Post
+
+union PostType = "question" | "answer" | "comment"
+
+union Role = "admin" | "moderator" | "contributor" | "maintainer" | "top contributor" | "rsource developer" | "strafes.net developer" | "knows their shit"
