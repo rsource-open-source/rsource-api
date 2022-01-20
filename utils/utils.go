@@ -11,7 +11,7 @@ type Credentials struct {
 	Username string
 	Password string
 	Host     string
-	Port     int64
+	Port     int
 	Database string
 	Sslmode  string
 }
@@ -44,12 +44,13 @@ func ParseCredentials(credentials string) Credentials {
 	}
 
 	p, _ := strconv.ParseInt(creds[3], 10, 32)
+	i := int(p)
 
 	return Credentials{
 		Username: creds[0],
 		Password: creds[1],
 		Host:     creds[2],
-		Port:     p,
+		Port:     i,
 		Database: creds[4],
 		Sslmode:  creds[5],
 	}
