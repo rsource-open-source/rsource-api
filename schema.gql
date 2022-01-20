@@ -1,3 +1,9 @@
+schema test {
+  query: Post
+}
+
+query {}
+
 # mapforums
 
 type Post {
