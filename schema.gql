@@ -1,10 +1,18 @@
 schema {
   query: Query
-  mutation: Mutation
 }
 
-type Query {}
-type Mutation {}
+type Query {
+  posts: [Post]
+  users: [User]
+  wiki: [WikiPage]
+}
+
+Query GetPosts {
+  posts {
+    id
+  }
+}
 
 # mapforums
 
