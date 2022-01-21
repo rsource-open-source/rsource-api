@@ -10,3 +10,8 @@
 # rsource api
 
 API for the rsource records' databases.
+
+## Branches
+| `main` | `v#` | `dev` |
+| ------ | ---- | ----- |
+| Latest beta version of the API | Specific version of the API | Development branch, unreleased |
