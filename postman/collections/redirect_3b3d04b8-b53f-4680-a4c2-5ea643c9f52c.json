@@ -1,0 +1,74 @@
+{
+    "info": {
+        "_postman_id": "b08b5720-2c9f-4220-9651-73f623789715",
+        "name": "redirect",
+        "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+    },
+    "item": [
+        {
+            "name": "mutations",
+            "item": [
+                {
+                    "name": "addUser",
+                    "id": "126dae4b-2c5b-4e81-a7ad-97acf0fc1792",
+                    "request": {
+                        "method": "POST",
+                        "header": [],
+                        "body": {
+                            "mode": "graphql",
+                            "graphql": {
+                                "query": "mutation addUser ($name: String!) {\n    addUser (name: $name) {\n        id\n        name\n    }\n}",
+                                "variables": "{\n  \"name\": \"\"\n}"
+                            }
+                        },
+                        "url": {
+                            "raw": "{{url}}",
+                            "host": [
+                                "{{url}}"
+                            ]
+                        }
+                    },
+                    "response": []
+                }
+            ],
+            "id": "7c716f50-360d-4314-bb8f-c536eabff557"
+        },
+        {
+            "name": "queries",
+            "item": [
+                {
+                    "name": "user",
+                    "id": "d993344e-3ae5-45a2-a858-bddc5fb76562",
+                    "request": {
+                        "method": "POST",
+                        "header": [],
+                        "body": {
+                            "mode": "graphql",
+                            "graphql": {
+                                "query": "query user ($id: String) {\n    user (id: $id) {\n        id\n        name\n    }\n}",
+                                "variables": "{\n  \"id\": \"\"\n}"
+                            }
+                        },
+                        "url": {
+                            "raw": "{{url}}",
+                            "host": [
+                                "{{url}}"
+                            ]
+                        }
+                    },
+                    "response": []
+                }
+            ],
+            "id": "2a92a7e4-f27b-4a66-9bfe-dc7a4ba224bf"
+        }
+    ],
+    "variable": [
+        {
+            "id": "url",
+            "key": "url",
+            "value": "",
+            "type": "any",
+            "description": "URL for the request."
+        }
+    ]
+}
