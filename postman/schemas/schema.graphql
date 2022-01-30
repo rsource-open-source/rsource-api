@@ -1,21 +1,79 @@
 schema {
   query: Query
-  mutation: Mutation
-}
-
-# test
-
-type User {
-  id: String!
-  name: String
 }
 
 type Query {
-  user (id: String): User
+  posts: [Post]
+  users: [User]
+  wiki: [WikiPage]
 }
 
-type Mutation {
-  addUser (
-    # Name for the User item
-    name: String!): User!
+query GetPosts {
+  posts {
+    id
+  }
 }
+
+# mapforums
+
+type Post {
+  id: ID!
+  author: User!
+  title: String
+  content: String!
+  answer: [Post]
+  post_type: PostType!
+  reply_of: Int # Post ID
+  timestamp: DateTime!
+}
+
+type User {
+  discord_id: ID!
+  roblox_id: ID!
+  posts: [Post]!
+  roles: [Role]!
+  votes: [Vote]!
+  restricted: Boolean!
+}
+
+type Vote {
+  post: Post!
+  user: User!
+  cast: VoteCast!
+}
+
+type CommitHistory {
+    user: User!
+    changes: String!
+}
+
+type WikiPage {
+  id: ID!
+  title: String!
+  content: String!
+  timestamp: DateTime!
+  collaborators: [User!]!
+  commit_history: CommitHistory
+}
+
+type Commit {
+  content: String!
+  timestamp: DateTime!
+  submitter: User!
+  id_to_page: Int # SomePage.id!
+}
+
+# Enums
+
+enum VoteCast {
+  Upvote
+  Downvote
+}
+
+# Unions
+
+union SomePage = WikiPage | Post
+
+union PostType = "question" | "answer" | "comment"
+
+union Role = "admin" | "moderator" | "contributor" | "maintainer" | "top contributor" | "rsource developer" | "strafes.net developer" | "knows their shit"
