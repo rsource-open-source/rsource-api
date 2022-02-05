@@ -55,7 +55,7 @@ func ParseCredentials(credentials string) Credentials {
 
 func MapCredentials(credentials Credentials) string {
 	return fmt.Sprintf(
-		" host=%s user=%s password='%s' dbname=%s port=%s sslmode=%s TimeZone=America/New_York",
+		"host=%s user=%s password='%s' dbname=%s port=%s sslmode=%s TimeZone=America/New_York",
 		credentials.Host, credentials.Username, credentials.Password, credentials.Database, credentials.Port, credentials.Sslmode,
 	)
 }
