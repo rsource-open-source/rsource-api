@@ -1,5 +1,11 @@
 schema {
   query: Query
+  mutation: Mutation
+}
+
+type Mutation {
+  createUser(data: UserCreateInput): User
+  createPost(data: PostCreateInput): Post
 }
 
 type Query {

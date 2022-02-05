@@ -2,8 +2,8 @@ package utils
 
 import (
 	"bufio"
+	"fmt"
 	"os"
-	"strconv"
 	"strings"
 )
 
@@ -11,7 +11,7 @@ type Credentials struct {
 	Username string
 	Password string
 	Host     string
-	Port     int
+	Port     string
 	Database string
 	Sslmode  string
 }
@@ -33,25 +33,29 @@ func ReadCredentials() string {
 		final += "\n" + line
 	}
 
-	return final
+	return final[1:]
 }
 
 func ParseCredentials(credentials string) Credentials {
 
 	creds := strings.Split(credentials, "\n")
 	for i, e := range creds {
-		creds[i] = strings.TrimSpace(e)
+		creds[i] = strings.SplitAfter(e, "= ")[1]
 	}
-
-	p, _ := strconv.ParseInt(creds[3], 10, 32)
-	i := int(p)
 
 	return Credentials{
 		Username: creds[0],
 		Password: creds[1],
 		Host:     creds[2],
-		Port:     i,
+		Port:     creds[3],
 		Database: creds[4],
 		Sslmode:  creds[5],
 	}
+}
+
+func MapCredentials(credentials Credentials) string {
+	return fmt.Sprintf(
+		" host=%s user=%s password='%s' dbname=%s port=%s sslmode=%s TimeZone=America/New_York",
+		credentials.Host, credentials.Username, credentials.Password, credentials.Database, credentials.Port, credentials.Sslmode,
+	)
 }
