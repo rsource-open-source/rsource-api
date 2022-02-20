@@ -4,24 +4,28 @@ import (
 	"log"
 
 	"github.com/gofiber/fiber/v2"
-	"github.com/gofiber/fiber/v2/middleware/cors"
 	"github.com/rsource-open-source/rsource-api/database"
-	// "github.com/rsource-open-source/rsource-api/routes"
+	v0 "github.com/rsource-open-source/rsource-api/routes/v0"
 )
 
-// func setupRoutes(app *fiber.App) {
-// 	app.Post("/v1/professor", routes.AddProfessor)
-// }
+func setupRoutes(app *fiber.App) {
+	appv0 := app.Group("/v0")
+
+	appv0.Post("/redirect:user_id:place_id:server_id:request_id", v0.AddRedirect)
+	// app.Get("/v0/redirect", routes.GetRedirects)
+	appv0.Get("/", func(c *fiber.Ctx) error {
+		return c.SendString("v0 base")
+	})
+}
 
 func main() {
 	database.ConnectDb()
 	app := fiber.New()
 
-	// setupRoutes(app)
+	setupRoutes(app)
 
-	app.Use(cors.New())
 	app.Use(func(c *fiber.Ctx) error {
-		return c.Status(404).JSON("Not found")
+		return c.Status(404).SendString("Not Found")
 	})
 
 	log.Fatal(app.Listen(":3000"))
