@@ -17,18 +17,20 @@ func AddRedirect(c *fiber.Ctx) error {
 	server_id := c.Params("server_id")
 	request_id := c.Params("request_id")
 
+	fmt.Println(user_id, place_id, server_id, request_id)
+
 	redirect := new(blueprints.Redirect)
 
 	// user_id
 	uid_int, err := strconv.Atoi(user_id)
 	if err != nil {
-		return c.Status(204).JSON("Unable to convert user_id to int")
+		return c.Status(fiber.StatusInternalServerError).JSON("Unable to convert user_id to int")
 	}
 
 	// place_id
 	pid_int, err := strconv.Atoi(place_id)
 	if err != nil {
-		return c.Status(204).JSON("Unable to convert place_id to int")
+		return c.Status(fiber.StatusInternalServerError).JSON("Unable to convert place_id to int")
 	}
 
 	redirect = &blueprints.Redirect{
@@ -39,12 +41,12 @@ func AddRedirect(c *fiber.Ctx) error {
 	}
 
 	if err := c.BodyParser(redirect); err != nil {
-		return c.Status(400).JSON(err.Error())
+		return c.Status(fiber.StatusBadRequest).JSON(err.Error())
 	}
 
-	database.DB.Db.Create(&redirect)
+	// database.DB.Db.Create(&redirect)
 
-	return c.Status(201).JSON(redirect)
+	return c.Status(fiber.StatusCreated).JSON(redirect)
 }
 
 func GetRedirects(c *fiber.Ctx) error {
@@ -53,8 +55,8 @@ func GetRedirects(c *fiber.Ctx) error {
 
 	if redirects != nil {
 		fmt.Println(reflect.TypeOf(redirects))
-		return c.Status(404).JSON(redirects)
+		return c.Status(fiber.StatusCreated).JSON(redirects)
 	} else {
-		return c.Status(204).SendString("No redirects found")
+		return c.Status(fiber.StatusNoContent).SendString("No redirects found")
 	}
 }
