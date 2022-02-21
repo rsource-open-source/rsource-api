@@ -5,6 +5,8 @@ import (
 
 	"github.com/gofiber/fiber/v2"
 	"github.com/rsource-open-source/rsource-api/database"
+
+	// "github.com/rsource-open-source/rsource-api/discord"
 	v0 "github.com/rsource-open-source/rsource-api/routes/v0"
 )
 
@@ -19,13 +21,16 @@ func setupRoutes(app *fiber.App) {
 }
 
 func main() {
+
+	// discord.StartBot()
+
 	database.ConnectDb()
 	app := fiber.New()
 
 	setupRoutes(app)
 
 	app.Use(func(c *fiber.Ctx) error {
-		return c.Status(fiber.StatusNotFound).SendString("Not Found")
+		return c.Status(fiber.StatusNotFound).SendString("404")
 	})
 
 	log.Fatal(app.Listen(":3000"))

@@ -22,3 +22,6 @@ cred
 
 # Air
 tmp
+
+# Discord Bot Token
+.env

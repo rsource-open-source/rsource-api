@@ -3,8 +3,11 @@ package utils
 import (
 	"bufio"
 	"fmt"
+	"log"
 	"os"
 	"strings"
+
+	"github.com/joho/godotenv"
 )
 
 type Credentials struct {
@@ -58,4 +61,12 @@ func MapCredentials(credentials Credentials) string {
 		"host=%s user=%s password='%s' dbname=%s port=%s sslmode=%s TimeZone=America/New_York",
 		credentials.Host, credentials.Username, credentials.Password, credentials.Database, credentials.Port, credentials.Sslmode,
 	)
+}
+
+func LoadEnv() {
+	err := godotenv.Load(".env")
+
+	if err != nil {
+		log.Fatal("Error loading .env file")
+	}
 }
