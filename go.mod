@@ -6,7 +6,7 @@ require (
 	github.com/gofiber/fiber/v2 v2.27.0
 	github.com/zeimedee/go-postgres v0.0.0-20210622135935-cc5834be70dd
 	gorm.io/driver/postgres v1.2.3
-	gorm.io/gorm v1.22.5
+	gorm.io/gorm v1.23.1
 )
 
 require github.com/gorilla/websocket v1.4.1 // indirect
