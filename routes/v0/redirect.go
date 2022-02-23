@@ -3,7 +3,9 @@ package v0
 import (
 	"fmt"
 	"reflect"
-	"strconv"
+	"regexp"
+
+	// "strconv"
 
 	"github.com/gofiber/fiber/v2"
 	"github.com/rsource-open-source/rsource-api/blueprints"
@@ -11,45 +13,62 @@ import (
 )
 
 func AddRedirect(c *fiber.Ctx) error {
+	c.Accepts("application/x-www-form-urlencoded")
+	// c.Accepts("application/json")
 
-	user_id := c.Params("user_id")
-	place_id := c.Params("place_id")
-	server_id := c.Params("server_id")
-	request_id := c.Params("request_id")
+	r, err := regexp.Compile(`user=\d;place=\d;server=\d;request=2;?`)
 
-	fmt.Println(user_id, place_id, server_id, request_id)
-
-	redirect := new(blueprints.Redirect)
-
-	// user_id
-	uid_int, err := strconv.Atoi(user_id)
 	if err != nil {
-		return c.Status(fiber.StatusInternalServerError).JSON("Unable to convert user_id to int")
+		return c.Status(fiber.StatusInternalServerError).JSON("Regexp compile error")
 	}
 
-	// place_id
-	pid_int, err := strconv.Atoi(place_id)
-	if err != nil {
-		return c.Status(fiber.StatusInternalServerError).JSON("Unable to convert place_id to int")
+	matches := r.FindAllString(string(c.Body()), -1)
+
+	if matches == nil {
+		return c.Status(fiber.StatusUnprocessableEntity).SendString("Unprocessable body")
 	}
 
-	redirect = &blueprints.Redirect{
-		UserID:    uid_int,
-		PlaceID:   pid_int,
-		ServerID:  server_id,
-		RequestID: request_id,
-	}
+	matches = append(matches)
 
-	if err := c.BodyParser(redirect); err != nil {
-		return c.Status(fiber.StatusBadRequest).JSON(err.Error())
-	}
+	// user_id := c.Params("user_id")
+	// place_id := c.Params("place_id")
+	// server_id := c.Params("server_id")
+	// request_id := c.Params("request_id")
+
+	// fmt.Println(user_id + "\"" + place_id + "\"")
+
+	// redirect := new(blueprints.Redirect)
+
+	// // user_id
+	// uid_int, err := strconv.Atoi(user_id)
+	// if err != nil {
+	// 	return c.Status(fiber.StatusInternalServerError).JSON("Unable to convert user_id to int")
+	// }
+
+	// // place_id
+	// pid_int, err := strconv.Atoi(place_id)
+	// if err != nil {
+	// 	return c.Status(fiber.StatusInternalServerError).JSON("Unable to convert place_id to int")
+	// }
+
+	// redirect = &blueprints.Redirect{
+	// 	UserID:    uid_int,
+	// 	PlaceID:   pid_int,
+	// 	ServerID:  server_id,
+	// 	RequestID: request_id,
+	// }
+
+	// if err := c.BodyParser(redirect); err != nil {
+	// 	return c.Status(fiber.StatusBadRequest).JSON(err.Error())
+	// }
 
 	// database.DB.Db.Create(&redirect)
 
-	return c.Status(fiber.StatusCreated).JSON(redirect)
+	return c.Status(fiber.StatusNotImplemented).JSON(":/")
 }
 
-func GetRedirects(c *fiber.Ctx) error {
+func GetRedirect(c *fiber.Ctx) error {
+
 	redirects := []blueprints.Redirect{}
 	database.DB.Db.Find(&redirects)
 
