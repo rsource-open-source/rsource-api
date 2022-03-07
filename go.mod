@@ -9,11 +9,11 @@ require (
 	gorm.io/gorm v1.23.1
 )
 
-require github.com/gorilla/websocket v1.4.1 // indirect
+require github.com/gorilla/websocket v1.4.2 // indirect
 
 require (
 	github.com/andybalholm/brotli v1.0.4 // indirect
-	github.com/bwmarrin/discordgo v0.23.2
+	github.com/bwmarrin/discordgo v0.24.0
 	github.com/jackc/chunkreader/v2 v2.0.1 // indirect
 	github.com/jackc/pgconn v1.10.1 // indirect
 	github.com/jackc/pgio v1.0.0 // indirect
