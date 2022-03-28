@@ -74,8 +74,8 @@ github.com/go-logfmt/logfmt v0.5.0/go.mod h1:wCYkCAKZfumFQihp8CzCvQ3paCTfi41vtzG
 github.com/go-sql-driver/mysql v1.4.0/go.mod h1:zAC/RDZ24gD3HViQzih4MyKcchzm+sOG5ZlKdlhCg5w=
 github.com/go-stack/stack v1.8.0/go.mod h1:v0f6uXyyMGvRgIKkXu+yp6POWl0qKG85gN/melR3HDY=
 github.com/gofiber/fiber/v2 v2.13.0/go.mod h1:oZTLWqYnqpMMuF922SjGbsYZsdpE1MCfh416HNdweIM=
-github.com/gofiber/fiber/v2 v2.29.0 h1:wopU1kXxdD9XxvQqYd1vSWMGu2PiZN0yy+DojygTRRA=
-github.com/gofiber/fiber/v2 v2.29.0/go.mod h1:1Ega6O199a3Y7yDGuM9FyXDPYQfv+7/y48wl6WCwUF4=
+github.com/gofiber/fiber/v2 v2.30.0 h1:R928kgJICQkcfIzAjMIQ+U0uOpa0+vTCZLLODeo4M14=
+github.com/gofiber/fiber/v2 v2.30.0/go.mod h1:1Ega6O199a3Y7yDGuM9FyXDPYQfv+7/y48wl6WCwUF4=
 github.com/gofrs/uuid v3.2.0+incompatible/go.mod h1:b2aQJv3Z4Fp6yNu3cdSllBxTCLRxnplIgP/c0N/04lM=
 github.com/gofrs/uuid v4.0.0+incompatible h1:1SD/1F5pU8p29ybwgQSwpQk+mwdRrXCYuPhW6m+TnJw=
 github.com/gofrs/uuid v4.0.0+incompatible/go.mod h1:b2aQJv3Z4Fp6yNu3cdSllBxTCLRxnplIgP/c0N/04lM=
