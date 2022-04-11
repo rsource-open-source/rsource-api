@@ -5,7 +5,7 @@ go 1.17
 require (
 	github.com/gofiber/fiber/v2 v2.31.0
 	github.com/zeimedee/go-postgres v0.0.0-20210622135935-cc5834be70dd
-	gorm.io/driver/postgres v1.3.3
+	gorm.io/driver/postgres v1.3.4
 	gorm.io/gorm v1.23.4
 )
 
