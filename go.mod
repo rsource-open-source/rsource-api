@@ -13,7 +13,7 @@ require github.com/gorilla/websocket v1.4.2 // indirect
 
 require (
 	github.com/andybalholm/brotli v1.0.4 // indirect
-	github.com/bwmarrin/discordgo v0.24.0
+	github.com/bwmarrin/discordgo v0.25.0
 	github.com/jackc/chunkreader/v2 v2.0.1 // indirect
 	github.com/jackc/pgconn v1.11.0 // indirect
 	github.com/jackc/pgio v1.0.0 // indirect
