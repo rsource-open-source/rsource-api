@@ -3,7 +3,7 @@ module github.com/rsource-open-source/rsource-api
 go 1.17
 
 require (
-	github.com/gofiber/fiber/v2 v2.34.1
+	github.com/gofiber/fiber/v2 v2.35.0
 	github.com/zeimedee/go-postgres v0.0.0-20210622135935-cc5834be70dd
 	gorm.io/driver/postgres v1.3.8
 	gorm.io/gorm v1.23.7
@@ -27,7 +27,7 @@ require (
 	github.com/joho/godotenv v1.4.0
 	github.com/klauspost/compress v1.15.0 // indirect
 	github.com/valyala/bytebufferpool v1.0.0 // indirect
-	github.com/valyala/fasthttp v1.37.0 // indirect
+	github.com/valyala/fasthttp v1.38.0 // indirect
 	github.com/valyala/tcplisten v1.0.0 // indirect
 	golang.org/x/crypto v0.0.0-20220214200702-86341886e292 // indirect
 	golang.org/x/sys v0.0.0-20220227234510-4e6760a101f9 // indirect
